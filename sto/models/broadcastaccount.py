@@ -12,7 +12,7 @@ class _BroadcastAccount(TimeStampedBaseModel):
 
     __tablename__ = "broadcast_account"
 
-    #: Network name like "kovan", "ethereum"
+    #: Network name like "kovan", "ethereum", "rinkeby"
     network = sa.Column(sa.String(256), nullable=False)
 
     #: Address of the account as hex string, like 0x000000

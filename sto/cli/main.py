@@ -43,7 +43,7 @@ def create_command_line_logger(log_level):
 
 
 def is_ethereum_network(network: str):
-    return network in ("ethereum", "kovan", "ropsten")
+    return network in ("ethereum", "kovan", "ropsten", "rinkeby")
 
 
 
@@ -60,7 +60,7 @@ INTRO_TEXT = """{}TokenMarket{} security token management tool.
 @click.group(help=INTRO_TEXT)
 @click.option('--config', '--config-file', required=False, default=None, help="INI file where to read options from", type=click.Path())
 @click.option('--database-file', required=False, default="transactions.sqlite", help="SQLite file that persists transaction broadcast status", type=click.Path())
-@click.option('--network', required=False, default="ethereum", help="Network name. Either 'ethereum' or 'kovan' are supported for now.")
+@click.option('--network', required=False, default="ethereum", help="Network name. Either 'ethereum', 'kovan' or 'rinkeby' are supported for now.")
 @click.option('--ethereum-node-url', required=False, default="http://localhost:8545", help="Parity or Geth JSON-RPC to connect for Ethereum network access")
 @click.option('--ethereum-abi-file', required=False, help='Solidity compiler output JSON to override default smart contracts')
 @click.option('--ethereum-gas-price', required=False, help='How many GWei we pay for gas', type=int)

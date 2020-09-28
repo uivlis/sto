@@ -59,7 +59,7 @@ class TokenScanner:
 
     def get_or_create_status(self) -> _TokenScanStatus:
         assert self.address.startswith("0x")
-        assert self.network in ("kovan", "ethereum", "testing", "ropsten")  # TODO: Sanity check - might want to remove this
+        assert self.network in ("kovan", "ethereum", "testing", "ropsten", "rinkeby")  # TODO: Sanity check - might want to remove this
 
         account = self.dbsession.query(self.TokenScanStatus).filter_by(network=self.network, address=self.address).one_or_none()
         if not account:

@@ -79,7 +79,7 @@ class EthereumStoredTXService:
 
         # Some early prototype sanity checks
         assert self.address.startswith("0x")
-        assert self.network in ("kovan", "ethereum", "testing", "ropsten")  # TODO: Sanity check - might want to remove this
+        assert self.network in ("kovan", "ethereum", "testing", "ropsten", "rinkeby")  # TODO: Sanity check - might want to remove this
 
         account = self.dbsession.query(self.broadcast_account_model).filter_by(network=self.network, address=self.address).one_or_none()
         if not account:
@@ -413,7 +413,7 @@ def verify_on_etherscan(logger: Logger, network: str, tx: _PreparedTransaction, 
     Uses https://etherscan.io/apis#contracts
     """
 
-    assert network in ("ethereum", "kovan", "ropsten", "rinkerby")
+    assert network in ("ethereum", "kovan", "ropsten", "rinkeby")
     if network != "ethereum":
         url = "https://api-{}.etherscan.io/api".format(network)
     else:

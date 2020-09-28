@@ -34,7 +34,7 @@ class _TokenScanStatus(TimeStampedBaseModel):
 
     __tablename__ = "token_scan_status"
 
-    #: Which network e.g. "ethereum", "kovan"
+    #: Which network e.g. "ethereum", "kovan", "rinkeby"
     network = sa.Column(sa.String(256), nullable=False)
 
     #: Address of the token contract, as hex string 0x00000, Ethereum checksummed
