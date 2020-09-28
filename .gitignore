@@ -64,7 +64,7 @@ target/
 chains/*
 
 # Local virtualenv installation
-venv
+uivlis-sto
 
 # populus compile files
 build
@@ -85,3 +85,4 @@ registrar.json
 
 # Development tools
 .idea
+.vscode

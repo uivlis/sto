@@ -69,7 +69,14 @@ def create_web3(url: str) -> Web3:
         # Shortcut for testing
         return url
     else:
-        return Web3(HTTPProvider(url))
+        if (url.find("rinkeby") > 0):
+            from web3.middleware import geth_poa_middleware
+            w3 = Web3(HTTPProvider(url))
+            # inject the poa compatibility middleware to the innermost layer (required for rinkeby)
+            w3.middleware_stack.inject(geth_poa_middleware, layer=0)
+            return w3
+        else:
+            return Web3(HTTPProvider(url))
 
 
 def integer_hash(number: int):
